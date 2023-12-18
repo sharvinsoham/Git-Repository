@@ -1,0 +1,21 @@
+or create a new repository on the command line
+echo "# OpenCV" >> README.md
+new-item -name 'example.md'
+
+git init 
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/sharvinsoham/OpenCV.git
+
+# Push to your own name
+git push origin <branch_name>
+git push -u origin main
+
+#To push the current branch and set the remote as upstream, use
+git push --set-upstream origin master #It sets up the branch in the remote repository
+
+…or push an existing repository from the command line
+git remote add origin https://github.com/sharvinsoham/OpenCV.git
+git branch -M main
+git push -u origin main
