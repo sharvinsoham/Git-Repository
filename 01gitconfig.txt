@@ -1,3 +1,8 @@
+#Git Configuration settings
+
 git config --list
 git config --global user.name "Your Name"
 git config --global user.email "name@example.com"
+
+#for help
+git --help

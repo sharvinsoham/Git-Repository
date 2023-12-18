@@ -1,0 +1,9 @@
+#Tells about changes in the file
+git diff
+ 
+White lines are unchanged in remote repository,
+red lines are modified & commited in local & yet to be pushed to the remote.
+Green lines are newly added changes & yet to be added or commited.
+
+Even after commiting changes we can visualize changes in the file
+git diff --cached
