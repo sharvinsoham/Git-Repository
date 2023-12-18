@@ -11,7 +11,7 @@ git add .   #all files in repository to staging area
 #Tells status about files whether branch is up to date or not, changes are committed or not.
 git status
 
-#To commit changes to a local repository
+#To commit changes to a local repository, every time we invoke commit command, a new snapshot is created of the file.
 git commit -m "commit message; Contains comments about changes"
 
 #Check the history of commits (log)
