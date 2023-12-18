@@ -14,13 +14,5 @@ git status
 #To commit changes to a local repository, every time we invoke commit command, a new snapshot is created of the file.
 git commit -m "commit message; Contains comments about changes"
 
-#Check the history of commits (log)
-git log
-#Viewing the differences between two points in time(diff).
-git diff  <commit1>..<commit2>    #Shows difference between two specific commits
-
-#Shows the differences between the latest commit and the previous one.
-git diff HEAD^
-
 #publishes local commits to Git repository
 git push
