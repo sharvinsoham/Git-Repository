@@ -2,10 +2,18 @@ or create a new repository on the command line
 echo "# OpenCV" >> README.md
 new-item -name 'example.md'
 
-git init 
+#renaming a file
+git mv .\oldfilename newfilename
+
+#initializing git repository
+git init
+
+git add --all
 git add README.md
+
 git commit -m "first commit"
-git branch -M main
+
+#adding origin
 git remote add origin https://github.com/sharvinsoham/OpenCV.git
 
 # Push to your own name

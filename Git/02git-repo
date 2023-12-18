@@ -6,6 +6,8 @@ code .\git-repo\
 
 #adds the file into staging area
 git add filename #adds single file into staging area
+
+#adding file name changes into staging helps git understand file is being renamed 
 git add .   #adds all files in repository to staging area
   
 #Tells status about files whether branch is up to date or not
