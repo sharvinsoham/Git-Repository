@@ -1,6 +1,7 @@
 #Git Configuration settings
-
 git config --list
+
+#Configuring user name
 git config --global user.name "Your Name"
 git config --global user.email "name@example.com"
 
