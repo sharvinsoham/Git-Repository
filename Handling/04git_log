@@ -1,0 +1,49 @@
+#Tells about changes in the file
+git diff
+ 
+White lines are unchanged in remote repository,
+red lines are modified & commited in local & yet to be pushed to the remote.
+Green lines are newly added changes & yet to be added or commited.
+
+Even after adding files into staged area, we can visualize and decide whether to commit change or not
+git diff --cached
+
+#Check the history of commits (log)
+git log
+
+#shows what was done in every commit
+git log -p
+
+#shows visualization how graphs are moving around
+git log --graph
+
+#search for specific part of commit message
+git log --grep='example'
+
+#To see what files have been changed by a particular commit:
+git show <commit_id>
+
+#Revert a commit: This will undo all the changes made in that commit.
+git revert <commit_id>
+
+#Shows the differences between the latest commit and the previous one.
+git diff HEAD^
+
+#Show the difference between two arbitrary commits. (Viewing the differences between two points in time(diff).)
+git diff  <commit1>..<commit2>    #Shows difference between two specific commits
+#If no arguments given it shows difference between HEAD and index
+
+#To compare against another branch you need to use @{upstream} notation
+git diff master@{u}..master   #Compares current branch with upstream of the current branch (usually master)
+
+#Showing the log of all the commits made on a particular branch
+git log -p origin/branch-name
+
+#Resetting your working directory to match the last committed state
+git reset --hard HEAD
+
+#Undoing changes that have been committed but not yet pushed to the remote repo
+git revert <commit_id>
+
+#Changing history by altering past commits
+git rebase -i <base_commit_id>     #Interactive rebasing
