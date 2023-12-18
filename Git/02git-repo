@@ -1,0 +1,20 @@
+#Cloning a remote repository to your system
+git clone https://github.com/sharvinsoham/git-repo.git
+
+#opens git repository in visual studio
+code .\git-repo\
+
+#adds the file into staging area
+git add filename #adds single file into staging area
+git add .   #adds all files in repository to staging area
+  
+#Tells status about files whether branch is up to date or not
+#changes are committed or not.
+git status
+
+#To commit changes to a local repository, every time we invoke commit command, a new snapshot is created of the file.
+git commit -m "commit message"  #Contains comments about changes
+git commit -m "removes filename.extension" #this deletes files from local repository
+
+#publishes local commits to Git repository
+git push
