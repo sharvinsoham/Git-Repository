@@ -3,7 +3,7 @@ git checkout <commit_hash>:<filename>
 
 # Restoring changes from staged file to unstaged
 git restore --staged filename.extension
-git restore --staged .
+git restore --staged . #removes all files from staged area
 
 # Undoing changes that have been committed but not yet pushed to the remote repo
 git revert <commit_id> # Reverts a specific commit:
