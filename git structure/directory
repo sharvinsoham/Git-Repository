@@ -1,5 +1,6 @@
 #git doesn't keep track of the empty folder. It's not included in even staging.
-If we add a file into an empty directory, it means the directory is important for the structure but there is no content in it.
+If we add a file into an empty directory, it means the new file is untracked and
+git needs to keep a track of untracked file & hence the directory becomes important for the structure but there is no content in it.
 So, if you want to include an empty folder into git repository - just put any dummy file inside that folder and commit this change.</s>
 
 #creating an empty directory
