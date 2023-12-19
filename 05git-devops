@@ -3,7 +3,9 @@ git checkout <commit_hash>:<filename>
 
 # Restoring changes from staged file to unstaged
 git restore --staged filename.extension
-git restore --staged . #removes all files from staged area
+git restore --staged .  #removes all files from staged area
+git restore <file>      # to discard changes in working directory of file
+git restore .
 
 # Undoing changes that have been committed but not yet pushed to the remote repo
 git revert <commit_id> # Reverts a specific commit:
@@ -14,6 +16,9 @@ git reset HEAD # Resets your local working tree and index to match the current h
 git reset HEAD -- filename  #To remove just one file.
 git reset HEAD               #To remove everything.
 
+git log
+git checkout commit_id
+git checkout main
 # Resetting just one file to match the content of the latest commit of that file
 git checkout HEAD -- path/to/file
 # Undo local changes that haven’t been committed yet
