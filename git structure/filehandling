@@ -1,0 +1,30 @@
+# renaming a file
+git mv .\oldfilename newfilename
+
+# adding filename changes into staging helps git understand file is being renamed 
+git add .
+
+# committing the change of renaming a file to its new name
+git commit -m "Rename example.md to newfilename.md"
+
+# deleting a file
+Remove-Item example.md -Force
+git add .
+git commit -m "Delete example.md"
+
+# Removing files from the git repository without deleting them from your local filesystem
+git rm --cached filename.extension
+
+# Remove only files that are tracked by Git, leaving untracked files alone
+git clean -d
+
+# Removing files from the staging area and also deleting them from the disk
+git clean -f
+# Showing which files will be deleted if you run 'git clean -f'
+git clean -n
+# Showing all unstaged (modified) files in the working tree since the last commit
+git clean -n
+# Removing uncommitted changes from the index
+git clean -df
+# Showing the status of ignored files
+git clean -i

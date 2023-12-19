@@ -1,52 +1,93 @@
+# Tells about changes in the file
+git diff
+ 
+$White lines are unchanged in remote repository $
+red lines are modified & commited in local & yet to be pushed to the remote.
+# Green lines are newly added changes & yet to be added or commited.
+
+# Even after adding files into staged area, we can visualize and decide whether to commit change or not
+git diff --cached
+
+# Shows the differences between the latest commit and the previous one.
+git diff HEAD^
+
+# If you just want to look at the changes without applying them use `git diff --patch`
+
+# To compare any two arbitrary commits
+# Show the difference between two arbitrary commits. (Analyzing the differences between two points in time(diff).)
+git diff [commit1] [commit2]    # If no arguments given it shows difference between HEAD and index
+
+# Show changes made on a particular day (Assuming your system clock is set correctly)
+git diff `date -d 'yesterday' +%Y-%m-%d`..HEAD   # Shows all the changes that were done yesterday till now.
+
+#Get the number of lines added and deleted in a file across all commits.
+git diff --numstat master HEAD src/js/*.js
+# Get the number of additions, deletions, and files changed since the last commit.
+git diff HEAD^ HEAD
+
+
+### Commits
+#To see more detailed information about each commit use
+git log
+--until=2.weeks
+--author=YourName
+--committer=GitHubUsername
+--grep=SearchTerm
+
 #Check the history of commits (log)
 git log
+#Limit number of entries displayed (from last)
+git log -n <number>
+
+#Shows the commit history for a specific file
+git log filename
+#Show the commit history of a file
+git log --follow <file>
+
+# Shows all commits made since last push
+git log origin/master..HEAD
+
+# See who made each commit and when they did it & what is commit message
+git log --author=<user.name>
 
 #shows what was done in every commit
 git log -p
+# Shows what changed DURING a certain period of time
+git log -p <tag>..<other_tag>   #Show changes between tags
+# List commits between two points in time (e.g., a branch or tag)
+git log <tag1>..<tag2>
 
-#Showing the log of all the commits made on a particular branch
-git log -p origin/branch-name
+# Shows only the first line of each commit message
+git log --oneline
+# Shows number of additions and deletions for each commit
+git log --stat
 
-#shows visualization how graphs are moving around
+#See all the commits that were made on a particular day
+git log --date=short --since='2013-07-08'
+#See what changed during a specific period
+git log --since=2.weeks
+
+#Shows a graphical representation of your commit tree or shows visualization how graphs are moving around
 git log --graph
 
-#search for specific part of commit message
-git log --grep='example'
+#Lists only merge commits
+git log --merges
+
+# Find commits based on authors, commit messages, etc.
+git log --grep="something"
+# Lists only the hashes of the commits that have been merged in
+git log --grep="Merge"
 
 
-#Show the last commit made
+###
+# Show the last commit made
 git show HEAD
+
+#To view the contents of a specific commit:
+# See the difference introduced by a specific commit
 #To see what files have been changed by a particular commit:
 git show <commit_id>
 
-
-#Tells about changes in the file
-git diff
- 
-White lines are unchanged in remote repository,
-red lines are modified & commited in local & yet to be pushed to the remote.
-Green lines are newly added changes & yet to be added or commited.
-
-Even after adding files into staged area, we can visualize and decide whether to commit change or not
-git diff --cached
-
-#Shows the differences between the latest commit and the previous one.
-git diff HEAD^
-
-#Show the difference between two arbitrary commits. (Viewing the differences between two points in time(diff).)
-git diff  <commit1>..<commit2>    #Shows difference between two specific commits
-#If no arguments given it shows difference between HEAD and index
-
-#To compare against another branch you need to use @{upstream} notation
-git diff master@{u}..master   #Compares current branch with upstream of the current branch (usually master)
-
-
-
-#Undoing changes that have been committed but not yet pushed to the remote repo
-git revert <commit_id> #This will undo all the changes made in that commit.
-
-#Resetting your working directory to match the last committed state
-git reset --hard HEAD
-
-#Changing history by altering past commits
-git rebase -i <base_commit_id>     #Interactive rebasing
+# View the contents of any commit by its hash code
+# View the commit object for a particular SHA-1 hash
+git show <commit_hash>

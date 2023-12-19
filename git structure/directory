@@ -1,0 +1,37 @@
+#git doesn't keep track of the empty folder. It's not included in even staging.
+If we add a file into an empty directory, it means the directory is important for the structure but there is no content in it.
+So, if you want to include an empty folder into git repository - just put any dummy file inside that folder and commit this change.</s>
+
+#creating an empty directory
+mkdir dir1
+
+echo "Hello World" > dir1/file1.txt
+echo "This is a test" > dir1/file1.txt
+ls -la | grep '^d'  #checking if the directory was created correctly, should show 'drwxr-xr-
+#removing the file and checking again
+rm dir1/file1.txt
+ls -la | grep '^d'   #should now show nothing because the directory is empty
+
+#adding and committing this change
+git add dir1 && git commit --all -m "Adding an empty directory"
+
+#checking that .gitignore works as expected:
+cat > .gitignore << EOL
+/dir1/*
+!/dir1/newfile.txt
+EOL
+
+touch dir1/newfile.txt
+echo 'This should be ignored.' > dir1/ignoredfile.txt
+echo 'This should NOT be ignored.' > dir1/notignoredfile.txt
+ls -A dir1
+
+#checking if all files are listed except those which match patterns from .gitignore
+test "$(ls -A dir1 | wc -l)" = 4
+#checking if only non-ignored file exists in working tree
+test "$(ls -A dir1 | grep -v "^ignoredfile\.txt$")" = ""
+#checking if all files are listed (including directories) except those which match patterns from .gitignore
+test "$(git ls-files -d dir1 | wc -l)" = 2
+#checking if only non-ignored file exists in index
+test "$(git diff-index --name-only HEAD -- dir1 | wc -l)" = 1
+rm .gitignore

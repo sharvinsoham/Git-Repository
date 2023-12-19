@@ -1,0 +1,55 @@
+# Create new branches
+git checkout -b <new_branch_name>
+
+# Switch to another branch
+git checkout <existing_branch_name>
+
+# Rename a branch
+git branch -m <current_branch_name> <new_branch_name>
+
+# Deleting a branch locally (not on the remote server)
+git branch -d <branchname>
+# Push your changes to the remote server, including deleting the branch there as well.
+git push origin --delete <remote-branchname>
+
+# Show changes you made since branching off of master
+git diff master...your-branch
+# Compare with another branch
+git diff master...develop
+
+# To compare two branches use `git diff`
+git diff myBranchName otherBranchName #Compare current branch against another branch
+
+# To compare against another branch you need to use @{upstream} notation
+git diff master@{u}..master   #Compares current branch with upstream of the current branch (usually master)
+
+
+#Comparing two different branches
+git log branch1..branch2
+# Showing the log of all the commits made on a particular branch
+git log -p origin/branch-name
+#Show graphical representation of branching history
+git log --oneline --decorate --graph --all
+# To see what's going on with your branch and its relationship to others
+git log --oneline --decorate --graph
+
+# Shows how many commits are in this SHA
+git show-branch <sha1>
+
+# Merging changes from one branch to another
+git merge --no-ff <source-branch>
+# Abort a conflicting merge
+git merge --abort
+
+
+#### Tagging
+# Create new tag at current head
+git tag v1.0
+# Create new annotated tag at current head
+git tag -a v1.0 -m "message explaining this version"
+# Push the new tag to remote repository
+git push origin v1.0
+# Delete local tag
+git tag -d v1.0
+# Delete remote tag
+git push :refs/tags/v1.0

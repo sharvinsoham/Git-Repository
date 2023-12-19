@@ -1,0 +1,46 @@
+# Checkout a specific version of a file
+git checkout <commit_hash>:<filename>
+
+# Restoring changes from staged file to unstaged
+git restore --staged filename.extension
+git restore --staged .
+
+# Undoing changes that have been committed but not yet pushed to the remote repo
+git revert <commit_id> # Reverts a specific commit:
+
+# If you only want to remove some files, use git reset instead.
+# Resetting local changes (unstage and discard changes)
+git reset HEAD # Resets your local working tree and index to match the current head commit. Any changes you had in your workspace since then
+git reset HEAD -- filename  #To remove just one file.
+git reset HEAD               #To remove everything.
+
+# Resetting just one file to match the content of the latest commit of that file
+git checkout HEAD -- path/to/file
+# Undo local changes that haven’t been committed yet
+git reset --hard
+# Resetting your working directory to match the last committed state
+git reset --hard HEAD
+# Resetting your entire project to match the latest commit on the main branch
+git reset --hard origin/main
+
+### Advanced Guide
+# Changing authorship of a specific commit
+git commit --amend --author="Author Name <email@example.com>"
+# Amending the date of a previous commit
+git commit --amend --date="2014-09-30 18:30:07"
+
+# Changing history by altering past commits
+git rebase -i <base_commit_id>     #Interactive rebasing
+
+# Forgetting about past commits (this is dangerous and should be used with caution)
+git log --grep=<string> | grep -v "Merge" | while read commit; do git branch --contains $commit | while
+read line; do if [ "$line" != "" ]; then echo $commit; fi; done | xargs -n1 git rebase --
+remove-empty </s>
+
+# Show the commit that introduced a bug
+git bisect good v0.23            #The current code is good
+git bisect bad v0.24             #The current code is broken
+# Now Git will check out the middle commit between v0.23 and v0.24
+# Once it does, tell Git whether the current version is good or bad
+git bisect run make test          #Run tests to find the problematic commit
+# When the tests pass, Git stops and prints the SHA1 of the current commit

@@ -1,29 +1,42 @@
-or create a new repository on the command line
+# create a new repository on the command line
+
+# Create a repository on github.com but don't initialize it.
+# Creating a new file
 echo "# OpenCV" >> README.md
-new-item -name 'example.md'
 
-#renaming a file
-git mv .\oldfilename newfilename
-
-#initializing git repository
+# initializing git repository
 git init
 
-git add --all
+# Adding the files to staging area
 git add README.md
+git add --all
 
-git commit -m "first commit"
+# Viewing status of staged files
+git status
 
-#adding origin
+# Committing changes to the local repo
+git commit -m "Added README.md"
+git add -A :/ 	#stage everything, or just git add <filename>
+
+# adding origin
 git remote add origin https://github.com/sharvinsoham/OpenCV.git
 
 # Push to your own name
 git push origin <branch_name>
-git push -u origin main
+git push -u origin main | master
 
-#To push the current branch and set the remote as upstream, use
+# adding all changes in your project (add,commit and push)
+git add * && git commit -m "Initial Commit" && git push -u origin master
+
+# Additional
+# To push the current branch and set the remote as upstream, use
 git push --set-upstream origin master #It sets up the branch in the remote repository
 
-…or push an existing repository from the command line
+# or push an existing repository from the command line
 git remote add origin https://github.com/sharvinsoham/OpenCV.git
-git branch -M main
-git push -u origin main
+git branch -M main/master
+
+# To remove local modifications (uncommitted changes) without affecting the index (staging area)
+git clean -d                     #Remove untracked directories and files in your current directory
+git clean -f                     #Force removal of untracked files and directories in your current directory
+git clean -df                    #Remove untracked directories and files in your current directory (the -i option is ignored)
